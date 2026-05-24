@@ -5,6 +5,6 @@
 .DS_Store
 .pdm-build/
 .pdm-dist/
-/vscode/
+.vscode/
 .venv/
 .idea/
