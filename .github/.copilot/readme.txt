@@ -1,1 +1,0 @@
-considere o arquivo mcp-config.json para ajudar os seus agentes a se conectarem ao mcp do supabase.

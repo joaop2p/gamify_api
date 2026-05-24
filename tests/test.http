@@ -1,0 +1,16 @@
+@base_url = http://localhost:8000/v1
+
+### Verificar se a rota está online
+GET {{base_url}}/auth/
+
+### Listar provedores disponíveis
+GET {{base_url}}/auth/providers
+
+### Iniciar OAuth com Google
+# @no-redirect
+GET {{base_url}}/auth/oauth/google/sign-in
+Content-Type: application/json
+
+{
+    "redirect_to": "http://localhost:8000/v1/auth/oauth/callback"
+}

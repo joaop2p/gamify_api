@@ -1,0 +1,3 @@
+[auth.providers.supabase]
+enabled = true
+providers = ["email", "google", "github"]
