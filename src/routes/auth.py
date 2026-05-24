@@ -17,8 +17,9 @@ def status() -> dict[str, str]:
 
 @router.get("/providers")
 def get_providers() -> dict[str, Any]:
+    if not CONFIG.get_config("auth", "providers", "supabase", "enabled"):
+        raise HTTPException(status_code=404, detail="OAuth providers not enabled.")
     return {"providers": CONFIG.get_config("auth", "providers", "supabase", "providers")}
-
 
 @router.get("/oauth/{provider}/sign-in")
 async def oauth_sign_in(
@@ -28,6 +29,8 @@ async def oauth_sign_in(
     scopes: str | None = None,
     app_redirect: str | None = None,
 ) -> RedirectResponse:
+    if not CONFIG.get_config("auth", "providers", "supabase", "enabled"):
+        raise HTTPException(status_code=404, detail="OAuth providers not enabled.")
     if app_redirect:
         request.session["app_redirect"] = app_redirect
     auth = SupabaseAuth.from_request(request)
